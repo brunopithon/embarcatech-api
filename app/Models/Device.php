@@ -13,7 +13,12 @@ class Device extends Model {
         'is_on',
     ];
 
-    /**
-     * Relacionamento: Um dispositivo pertence a um usuário.
-     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+    public function commands() {
+        return $this->belongsToMany(Command::class, 'command_device');
+    }
 }
